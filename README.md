@@ -2,6 +2,8 @@
 
 PROJECT WORKING MODEL URL (#https://shauryasrivastava-1612.github.io/AI-Powered-Phishing-detection-and-Mitigation/)
 
+YOUTUBE DEMO VIDEO LINK
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
