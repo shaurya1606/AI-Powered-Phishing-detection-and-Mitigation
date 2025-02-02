@@ -1,8 +1,8 @@
 # AI-Powered Phishing Detection and Mitigation 🛡️🚨
 
-PROJECT WORKING MODEL URL (#https://shauryasrivastava-1612.github.io/AI-Powered-Phishing-detection-and-Mitigation/)
+PROJECT WORKING MODEL URL (https://shauryasrivastava-1612.github.io/AI-Powered-Phishing-detection-and-Mitigation/)
 
-YOUTUBE DEMO VIDEO LINK
+YOUTUBE DEMO VIDEO LINK (https://youtu.be/WosAwwGNItA?si=MS5cCMO_fYCItvyQ )
 
 ## Table of Contents
 
