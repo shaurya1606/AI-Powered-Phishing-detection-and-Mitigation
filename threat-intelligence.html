@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Intelligence - PhishGuard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">PhishGuard</a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="email-scanner.html">Email Scanner</a></li>
+            <li><a href="url-scanner.html">URL Scanner</a></li>
+            <li><a href="threat-intelligence.html">Threat Intelligence</a></li>
+            <li><a href="#" id="logoutBtn" class="btn-secondary">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="threat-intelligence-container">
+        <h1>Threat Intelligence</h1>
+        <p>Stay informed about the latest threats and vulnerabilities in the digital landscape.</p>
+
+        <section class="threat-data-feed">
+            <h2>Real-Time Threat Data</h2>
+            <div id="threatData"></div>
+        </section>
+
+        <section class="threat-analysis">
+            <h2>Threat Analysis</h2>
+            <canvas id="threatChart"></canvas>
+        </section>
+
+        <section class="recent-threats">
+            <h2>Recent Threats</h2>
+            <div id="recentThreatsList"></div>
+        </section>
+
+        <section class="recent-scans">
+            <h2>Recent Scans</h2>
+            <div id="recentScansList"></div>
+        </section>
+
+        <section class="recommendations">
+            <h2>Recommendations</h2>
+            <ul>
+                <li>Keep your software updated.</li>
+                <li>Use strong, unique passwords.</li>
+                <li>Be cautious of suspicious emails and links.</li>
+            </ul>
+        </section>
+
+        <section class="download-reports">
+            <h2>Download Reports</h2>
+            <a href="reports/threat-report.pdf" class="btn-primary">Download Latest Report</a>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 PhishGuard. All rights reserved.</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/threat-intelligence.js"></script>
+</body>
+</html> 
