@@ -6,6 +6,9 @@ YOUTUBE DEMO VIDEO LINK (https://youtu.be/WosAwwGNItA?si=MS5cCMO_fYCItvyQ )
 
 GOOGLE DRIVE LINK ([https://github.com/shauryasrivastava-1612/AI-Powered-Phishing-detection-and-Mitigation](https://drive.google.com/drive/folders/1VOcpFK9SAUOef4PgQTzNWH66TZGH12GA?dmr=1&ec=wgc-drive-globalnav-goto))
 
+COLAB LINK (https://colab.research.google.com/drive/1smKi8uIBk4ZeezQe9bWdhXE4ZjiGWuO-#scrollTo=zOAmij2b18VK)
+
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
