@@ -93,10 +93,10 @@ pandas
 flask
 fastapi
 swifter
-
+```
 ```bash
 pip freeze > requirements.txt
-
+```
 ## Usage
 
 - **Frontend**: Upload and analyze emails or URLs directly via the UI.
