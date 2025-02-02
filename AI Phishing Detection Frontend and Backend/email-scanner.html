@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Scanner - PhishGuard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/scanner.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">PhishGuard</a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="email-scanner.html">Email Scanner</a></li>
+            <li><a href="url-scanner.html">URL Scanner</a></li>
+            <li><a href="threat-intelligence.html">Threat Intelligence</a></li>
+            <li><a href="#" id="logoutBtn" class="btn-secondary">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="scanner-container">
+        <div class="scanner-header">
+            <h1>Email Scanner</h1>
+            <p>Analyze emails for potential phishing threats</p>
+        </div>
+
+        <div class="scanner-content">
+            <form id="emailScanForm">
+                <div class="form-group">
+                    <label for="emailContent">Paste Email Content</label>
+                    <textarea id="emailContent" rows="10" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="emailFile">Or Upload Email File (.eml, .txt)</label>
+                    <input type="file" id="emailFile" accept=".eml,.txt">
+                </div>
+
+                <button type="submit" class="btn-primary">Scan Email</button>
+            </form>
+
+            <div class="results-container" id="scanResults" style="display: none;">
+                <h2>Scan Results</h2>
+                <div class="result-card">
+                    <h3>Sender Reputation</h3>
+                    <div class="score" id="senderScore">-</div>
+                </div>
+                <div class="result-card">
+                    <h3>Content Risk Score</h3>
+                    <div class="score" id="contentScore">-</div>
+                </div>
+                <div class="result-card">
+                    <h3>Links Analysis</h3>
+                    <div id="linksAnalysis">-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 PhishGuard. All rights reserved.</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/email-scanner.js"></script>
+</body>
+</html> 

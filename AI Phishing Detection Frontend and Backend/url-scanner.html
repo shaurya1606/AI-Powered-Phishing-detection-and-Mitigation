@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Scanner - PhishGuard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/scanner.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">PhishGuard</a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="email-scanner.html">Email Scanner</a></li>
+            <li><a href="url-scanner.html">URL Scanner</a></li>
+            <li><a href="threat-intelligence.html">Threat Intelligence</a></li>
+            <li><a href="#" id="logoutBtn" class="btn-secondary">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="scanner-container">
+        <div class="scanner-header">
+            <h1>URL Scanner</h1>
+            <p>Check URLs for potential phishing threats</p>
+        </div>
+
+        <div class="scanner-content">
+            <form id="urlScanForm">
+                <div class="form-group">
+                    <label for="urlInput">Enter URL to Scan</label>
+                    <input type="url" id="urlInput" required 
+                           placeholder="https://example.com">
+                </div>
+
+                <button type="submit" class="btn-primary">Scan URL</button>
+            </form>
+
+            <div class="bulk-scan">
+                <h3>Bulk URL Scan</h3>
+                <div class="form-group">
+                    <label for="urlList">Enter Multiple URLs (one per line)</label>
+                    <textarea id="urlList" rows="5" 
+                              placeholder="https://example1.com&#10;https://example2.com"></textarea>
+                </div>
+                <button onclick="scanBulkUrls()" class="btn-secondary">Scan Multiple URLs</button>
+            </div>
+
+            <div class="results-container" id="scanResults" style="display: none;">
+                <h2>Scan Results</h2>
+                <div class="result-card">
+                    <h3>Safety Score</h3>
+                    <div class="score" id="safetyScore">-</div>
+                </div>
+                <div class="result-card">
+                    <h3>Threat Details</h3>
+                    <div id="threatDetails">-</div>
+                </div>
+                <div class="result-card">
+                    <h3>Recommendations</h3>
+                    <div id="recommendations">-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 PhishGuard. All rights reserved.</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/url-scanner.js"></script>
+</body>
+</html> 

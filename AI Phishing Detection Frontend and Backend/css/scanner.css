@@ -1,0 +1,128 @@
+.scanner-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.scanner-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.scanner-content {
+    background: #2c2c2c;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.scanner-content textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.results-container {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.result-card {
+    background: #3a3a3a;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    color: #E0E0E0;
+}
+
+.result-card h3 {
+    color: #00BCD4;
+}
+
+.score {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.safe {
+    color: #27ae60;
+}
+
+.warning {
+    color: #f39c12;
+}
+
+.danger {
+    color: #e74c3c;
+}
+
+.bulk-scan {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.bulk-results {
+    margin-top: 2rem;
+}
+
+.bulk-result-item {
+    background: #3a3a3a;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #E0E0E0;
+}
+
+.bulk-result-item .url {
+    word-break: break-all;
+    margin-right: 1rem;
+}
+
+.threat-item {
+    color: #e74c3c;
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.threat-item::before {
+    content: "⚠️";
+    position: absolute;
+    left: 0;
+}
+
+.recommendation-item {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.recommendation-item::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+}
+
+.safe-message {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Loading animation */
+@keyframes scanning {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+button:disabled {
+    animation: scanning 1.5s infinite;
+} 

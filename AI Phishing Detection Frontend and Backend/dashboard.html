@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PhishGuard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+            </svg>
+            PhishGuard
+        </a>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="email-scanner.html">Email Scanner</a></li>
+            <li><a href="url-scanner.html">URL Scanner</a></li>
+            <li><a href="threat-intelligence.html">Threat Intelligence</a></li>
+            <li><a href="#" id="logoutBtn" class="btn-secondary">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Welcome, <span id="userGreeting">User</span>!</h1>
+            <p class="last-login">Last login: <span id="lastLoginTime">Never</span></p>
+            <p>View your security statistics and recent scans</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-envelope-open-text stat-icon"></i>
+                <h3>Total Email Scans</h3>
+                <p class="stat-number" id="totalEmailScans">0</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-exclamation-circle stat-icon"></i>
+                <h3>Threats in Emails Detected</h3>
+                <p class="stat-number" id="threatsInEmails">0</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-link stat-icon"></i>
+                <h3>Total URL Scans</h3>
+                <p class="stat-number" id="totalUrlScans">0</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-exclamation-triangle stat-icon"></i>
+                <h3>Threats in URLs Detected</h3>
+                <p class="stat-number" id="threatsInUrls">0</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle stat-icon"></i>
+                <h3>Safe Emails</h3>
+                <p class="stat-number" id="safeEmails">0</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle stat-icon"></i>
+                <h3>Safe URLs</h3>
+                <p class="stat-number" id="safeUrls">0</p>
+            </div>
+            <div class="stat-card chat-card">
+                <div class="chat-header">
+                    <h2>Chat with Us</h2>
+                </div>
+                <div class="chat-box" id="chatBox">
+                    <div class="messages" id="messages"></div>
+                </div>
+                <input type="text" id="userInput" placeholder="Type your message..." />
+                <button id="sendButton">Send</button>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <canvas id="emailChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <canvas id="urlChart"></canvas>
+            </div>
+        </div>
+
+        <div class="recent-scans">
+            <h2>Recent Scans</h2>
+            <div class="scan-list" id="scanList">
+                <p class="no-scans">No recent scans</p>
+            </div>
+        </div>
+
+        <div class="insights-container">
+            <h2>Detection Reports and Insights</h2>
+            <div id="insightsReport">
+                <h3>Trend and Behavior Insights</h3>
+                <div id="keywordInsights"></div>
+                <div id="engagementMetrics"></div>
+                <div id="postingFrequency"></div>
+                <div id="emailInsights"></div>
+                <div id="urlInsights"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 PhishGuard. All rights reserved.</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        // Refresh the dashboard every 5 minutes (300000 milliseconds)
+        setInterval(updateDashboard, 300000);
+    </script>
+</body>
+</html> 
