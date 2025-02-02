@@ -4,7 +4,7 @@ PROJECT WORKING MODEL URL (https://shauryasrivastava-1612.github.io/AI-Powered-P
 
 YOUTUBE DEMO VIDEO LINK (https://youtu.be/WosAwwGNItA?si=MS5cCMO_fYCItvyQ )
 
-GOOGLE DRIVE LINK (https://github.com/shauryasrivastava-1612/AI-Powered-Phishing-detection-and-Mitigation)
+GOOGLE DRIVE LINK ([https://github.com/shauryasrivastava-1612/AI-Powered-Phishing-detection-and-Mitigation](https://drive.google.com/drive/folders/1VOcpFK9SAUOef4PgQTzNWH66TZGH12GA?dmr=1&ec=wgc-drive-globalnav-goto))
 
 ## Table of Contents
 
