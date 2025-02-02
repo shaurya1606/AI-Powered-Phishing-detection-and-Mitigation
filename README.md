@@ -54,13 +54,9 @@ The system is built on a modular, scalable architecture:
 
 ## Technology Stack
 
-- **Frontend**: [Next.js](https://nextjs.org/) (TypeScript)
-- **Backend**: [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/)
-- **Database**: [PostgreSQL](https://www.postgresql.org/), [MongoDB](https://www.mongodb.com/)
+- **Frontend**: [HTML, CSS, JAVASCRIPT]
+- **Backend**: [Flask]
 - **AI/ML Models**: [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), [Scikit-learn](https://scikit-learn.org/)
-- **Threat Intelligence APIs**: Google Safe Browsing, OpenPhish, VirusTotal
-- **Authentication**: [OAuth 2.0](https://oauth.net/2/), [JWT](https://jwt.io/)
-- **Cloud Services**: AWS/GCP/Azure for hosting and scalability
 
 ## Installation
 
@@ -69,72 +65,43 @@ To get started with the AI-Powered Phishing Detection and Mitigation system, fol
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-repo/ai-phishing-detection.git
-    cd ai-phishing-detection
+    git clone [https://github.com/your-repo/ai-phishing-detection.git](https://github.com/shauryasrivastava-1612/AI-Powered-Phishing-detection-and-Mitigation
+    cd AI Phishing Detection Frontend and Backend
     ```
 
 2. Install dependencies:
 
     ```bash
-    npm install
+    pip install -r requirements.txt
+
     ```
+3. Create `requirements.txt` File
+The `requirements.txt` file lists the dependencies that need to be installed for the project.
 
-3. Set up environment variables in a `.env` file:
+Here’s an example of a `requirements.txt` file for your project:
 
-    ```bash
-    DATABASE_URL=your_database_url
-    API_KEY=your_api_key
-    JWT_SECRET=your_secret_key
-    ```
+```bash
+transformers
+torch
+datasets
+scikit-learn
+nltk
+textstat
+seaborn
+matplotlib
+pandas
+flask
+fastapi
+swifter
 
-4. Run the application locally:
-
-    ```bash
-    npm run dev
-    ```
+```bash
+pip freeze > requirements.txt
 
 ## Usage
 
 - **Frontend**: Upload and analyze emails or URLs directly via the UI.
 - **Backend**: The system processes requests using AI-based detection mechanisms.
 - **Admin Dashboard**: Security administrators can view **alerts**, **logs**, and **analytics** to monitor phishing attempts.
-
-## API Integration
-
-You can integrate the phishing detection system with third-party tools via the following API endpoints:
-
-- **Scan Email**: `POST /api/analyze/email`
-- **Scan URL**: `POST /api/analyze/url`
-- **Get Threat Reports**: `GET /api/reports`
-- **User Authentication**: `POST /api/auth/login`
-
-## Testing
-
-To run the tests and ensure everything is working correctly:
-
-- **Unit tests**:
-
-    ```bash
-    npm run test
-    ```
-
-- **Integration tests**:
-
-    ```bash
-    npm run test:integration
-    ```
-
-## Deployment
-
-To deploy the system to a cloud platform:
-
-1. **Build the project**:
-
-    ```bash
-    npm run build
-    ```
-
-2. **Deploy** to your cloud provider (AWS, GCP, Azure, DigitalOcean, etc.)
 
 ## Challenges
 
