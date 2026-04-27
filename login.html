@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up - PhishGuard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <style>
+        .auth-container { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; background: var(--bg-main); background-image: radial-gradient(at 50% 50%, rgba(99, 102, 241, 0.15) 0px, transparent 60%); }
+        .auth-box { background: var(--bg-secondary); border: 1px solid var(--glass-border); border-radius: 20px; width: 100%; max-width: 450px; padding: 3rem; backdrop-filter: blur(20px); box-shadow: 0 25px 50px rgba(0,0,0,0.5); overflow: hidden; position: relative; }
+        .auth-header { text-align: center; margin-bottom: 2rem; }
+        .auth-header h2 { font-size: 2rem; color: var(--text-main); margin-bottom: 0.5rem; }
+        .toggle-btns { display: flex; background: rgba(0,0,0,0.3); border-radius: 12px; margin-bottom: 2rem; padding: 0.3rem; }
+        .toggle-btn { flex: 1; text-align: center; padding: 0.8rem; cursor: pointer; border-radius: 8px; font-weight: 600; color: var(--text-muted); transition: all 0.3s ease; }
+        .toggle-btn.active { background: var(--accent-indigo); color: white; }
+        .auth-form { display: none; animation: fadeIn 0.4s ease; }
+        .auth-form.active { display: block; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="logo" style="position: absolute; top: 2rem; left: 2rem;">
+        <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        PhishGuard
+    </a>
+
+    <div class="auth-container">
+        <div class="auth-box animate-up">
+            <div class="auth-header">
+                <h2>Welcome Back</h2>
+                <p style="color: var(--text-muted);">Log in or create an account to start scanning.</p>
+            </div>
+            
+            <div class="toggle-btns">
+                <div class="toggle-btn active" onclick="switchTab('login')">Login</div>
+                <div class="toggle-btn" onclick="switchTab('signup')">Sign Up</div>
+            </div>
+
+            <form id="loginForm" class="auth-form active" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <input type="text" id="loginUsername" placeholder=" " required>
+                    <label>Username / Email</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="loginPassword" placeholder=" " required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">Log In</button>
+            </form>
+
+            <form id="signupForm" class="auth-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <input type="text" id="signupUsername" placeholder=" " required>
+                    <label>Username</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="signupEmail" placeholder=" " required>
+                    <label>Email Address</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="signupPassword" placeholder=" " required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+            
+            if (tab === 'login') {
+                document.querySelectorAll('.toggle-btn')[0].classList.add('active');
+                document.getElementById('loginForm').classList.add('active');
+                document.querySelector('.auth-header h2').innerText = 'Welcome Back';
+            } else {
+                document.querySelectorAll('.toggle-btn')[1].classList.add('active');
+                document.getElementById('signupForm').classList.add('active');
+                document.querySelector('.auth-header h2').innerText = 'Create Account';
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            // Mock authentication
+            const username = document.getElementById('loginUsername').value || document.getElementById('signupUsername').value;
+            localStorage.setItem('isAuthenticated', 'true');
+            localStorage.setItem('username', username || 'User');
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>
