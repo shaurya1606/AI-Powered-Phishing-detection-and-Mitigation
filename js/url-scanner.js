@@ -1,4 +1,4 @@
-document.getElementById('urlScanForm').addEventListener('submit', function(e) {
+document.getElementById('urlScanForm').addEventListener('submit', function (e) {
     e.preventDefault();
     const url = document.getElementById('urlInput').value;
     scanUrl(url);
@@ -113,7 +113,7 @@ function scanBulkUrls() {
     }
 
     bulkResults.innerHTML = '<h2>Bulk Scan Results</h2>';
-    
+
     urls.forEach((url, index) => {
         setTimeout(() => {
             mockUrlScan(url).then(results => {
