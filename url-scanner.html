@@ -4,72 +4,219 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL Scanner - PhishGuard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/scanner.css">
+    <style>
+        .scanner-container {
+            padding: 120px 5% 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .scanner-card {
+            width: 100%;
+            max-width: 800px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .scanner-card h2 {
+            font-size: 2rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .search-wrapper {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 1.2rem;
+            padding-left: 3rem;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--bg-main);
+            color: var(--text-main);
+            font-size: 1.1rem;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-indigo);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+        }
+
+        .results-container {
+            margin-top: 3rem;
+            width: 100%;
+            max-width: 800px;
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .safety-meter {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .meter-bar-container {
+            height: 12px;
+            background: var(--bg-main);
+            border-radius: 6px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .meter-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--danger), var(--warning), var(--success));
+            transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
-        <a href="index.html" class="logo">PhishGuard</a>
+        <a href="index.html" class="logo">
+            <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+            </svg>
+            PhishGuard
+        </a>
         <ul class="nav-links">
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="email-scanner.html">Email Scanner</a></li>
-            <li><a href="url-scanner.html">URL Scanner</a></li>
-            <li><a href="threat-intelligence.html">Threat Intelligence</a></li>
-            <li><a href="#" id="logoutBtn" class="btn-secondary">Logout</a></li>
+            <li><a href="url-scanner.html" style="color: var(--accent-cyan)">URL Scanner</a></li>
+            <li><a href="threat-intelligence.html">Threat Intel</a></li>
         </ul>
     </nav>
 
-    <div class="scanner-container">
-        <div class="scanner-header">
-            <h1>URL Scanner</h1>
-            <p>Check URLs for potential phishing threats</p>
+    <div class="scanner-container animate-up">
+        <div class="scanner-card">
+            <h2>Scan a Link</h2>
+            <p style="color: var(--text-muted);">Enter a website URL to scan it for malware, phishing, and domain reputation.</p>
+            
+            <form id="urlScanForm" class="search-wrapper">
+                <i class="fas fa-globe search-icon"></i>
+                <input type="url" id="urlInput" class="search-input" placeholder="https://example.com" required>
+                <button type="submit" id="scanBtn" class="btn-primary" style="padding: 0 2.5rem;">Scan</button>
+            </form>
         </div>
 
-        <div class="scanner-content">
-            <form id="urlScanForm">
-                <div class="form-group">
-                    <label for="urlInput">Enter URL to Scan</label>
-                    <input type="url" id="urlInput" required 
-                           placeholder="https://example.com">
+        <div class="results-container" id="resultsContainer">
+            <div class="safety-meter">
+                <h3 id="urlTitle" style="word-break: break-all; margin-bottom: 0.5rem; color: var(--accent-cyan);"></h3>
+                <h1 id="scoreNumber" style="font-size: 3.5rem; line-height: 1;">--</h1>
+                <p>Safety Score</p>
+                
+                <div class="meter-bar-container">
+                    <div class="meter-bar" id="meterBar"></div>
                 </div>
 
-                <button type="submit" class="btn-primary">Scan URL</button>
-            </form>
-
-            <div class="bulk-scan">
-                <h3>Bulk URL Scan</h3>
-                <div class="form-group">
-                    <label for="urlList">Enter Multiple URLs (one per line)</label>
-                    <textarea id="urlList" rows="5" 
-                              placeholder="https://example1.com&#10;https://example2.com"></textarea>
-                </div>
-                <button onclick="scanBulkUrls()" class="btn-secondary">Scan Multiple URLs</button>
-            </div>
-
-            <div class="results-container" id="scanResults" style="display: none;">
-                <h2>Scan Results</h2>
-                <div class="result-card">
-                    <h3>Safety Score</h3>
-                    <div class="score" id="safetyScore">-</div>
-                </div>
-                <div class="result-card">
-                    <h3>Threat Details</h3>
-                    <div id="threatDetails">-</div>
-                </div>
-                <div class="result-card">
-                    <h3>Recommendations</h3>
-                    <div id="recommendations">-</div>
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
+                    <span id="verdictBadge" class="score">Evaluating...</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2024 PhishGuard. All rights reserved.</p>
-    </footer>
+    <script src="js/config.js"></script>
+    <script>
+        document.getElementById('urlScanForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('scanBtn');
+            const url = document.getElementById('urlInput').value;
+            const container = document.getElementById('resultsContainer');
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            btn.disabled = true;
+            
+            document.getElementById('meterBar').style.width = '0%';
+            container.style.display = 'none';
 
-    <script src="js/auth.js"></script>
-    <script src="js/url-scanner.js"></script>
+            try {
+                const res = await fetch(`${CONFIG.API_BASE_URL}/url-scan`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: url })
+                });
+                
+                const data = await res.json();
+                
+                setTimeout(() => {
+                    displayUrlResults(url, data);
+                    btn.innerHTML = 'Scan';
+                    btn.disabled = false;
+                }, 600);
+            } catch(err) {
+                alert('Error connecting to backend.');
+                btn.innerHTML = 'Scan';
+                btn.disabled = false;
+            }
+        });
+
+        function displayUrlResults(url, data) {
+            const container = document.getElementById('resultsContainer');
+            container.style.display = 'block';
+            
+            document.getElementById('urlTitle').innerText = url;
+            
+            // Assuming data.safetyScore is 1-100 (100 being safest)
+            // If data.prediction == 'spam', score is low
+            let score = data.safetyScore || (data.prediction === 'spam' ? 20 : 90);
+            
+            // Adjust bar colors dynamically if needed, but CSS gradient handles it, we just set width
+            setTimeout(() => {
+                document.getElementById('meterBar').style.width = score + '%';
+            }, 100);
+
+            // Animate number
+            let current = 0;
+            const numEl = document.getElementById('scoreNumber');
+            const intv = setInterval(() => {
+                if(current >= score) {
+                    clearInterval(intv);
+                    numEl.innerText = score;
+                } else {
+                    current += 2;
+                    numEl.innerText = current;
+                }
+            }, 20);
+
+            const badge = document.getElementById('verdictBadge');
+            if(score > 70) {
+                badge.className = 'score safe';
+                badge.innerText = 'Safe to Browse';
+            } else if (score > 40) {
+                badge.className = 'score warning';
+                badge.innerText = 'Suspicious';
+            } else {
+                badge.className = 'score danger';
+                badge.innerText = 'Malicious / Phishing';
+            }
+        }
+    </script>
 </body>
-</html> 
+</html>

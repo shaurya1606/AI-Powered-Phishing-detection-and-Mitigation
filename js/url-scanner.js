@@ -10,7 +10,7 @@ async function scanUrl(url) {
     submitButton.textContent = 'Scanning...';
 
     try {
-        const response = await fetch('http://localhost:5000/url-scan', {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/url-scan`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ function displayResults(data) {
 }
 
 function loadRecentScans() {
-    fetch('http://localhost:5000/recent-scans')
+    fetch(`${CONFIG.API_BASE_URL}/recent-scans`)
         .then(response => response.json())
         .then(scans => {
             const recentScansContainer = document.getElementById('recentScansList');

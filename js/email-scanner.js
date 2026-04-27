@@ -8,7 +8,7 @@ document.getElementById('emailScanForm').addEventListener('submit', function(e) 
     document.querySelector('button[type="submit"]').textContent = 'Scanning...';
 
     // Make API call to Flask backend
-    fetch('http://localhost:5000/predict', {
+    fetch(`${CONFIG.API_BASE_URL}/predict`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ function storeScanHistory(scan) {
 }
 
 function loadRecentScans() {
-    fetch('http://localhost:5000/recent-scans')
+    fetch(`${CONFIG.API_BASE_URL}/recent-scans`)
         .then(response => response.json())
         .then(scans => {
             const recentScansContainer = document.getElementById('recentScansList');
